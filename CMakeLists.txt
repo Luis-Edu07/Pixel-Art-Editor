@@ -29,6 +29,17 @@ target_compile_definitions(PixelArtEditor PRIVATE PIXEL_ART_EDITOR_VERSION="${PR
 
 install(TARGETS PixelArtEditor RUNTIME DESTINATION bin BUNDLE DESTINATION .)
 
+# Bundle the Qt libraries and plugins alongside the installed executable so
+# release archives can run without a separate Qt installation.
+if(Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
+    qt_generate_deploy_app_script(
+        TARGET PixelArtEditor
+        OUTPUT_SCRIPT deploy_script
+        NO_UNSUPPORTED_PLATFORM_ERROR
+    )
+    install(SCRIPT ${deploy_script})
+endif()
+
 include(CTest)
 if(BUILD_TESTING)
     find_package(Qt6 6.2 COMPONENTS Test QUIET)
