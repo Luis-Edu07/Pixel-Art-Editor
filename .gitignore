@@ -1,0 +1,13 @@
+/build/
+/cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.user
+*.suo
+*.pdb
+*.ilk
+*.exe
+*.AppImage
+*.deb
